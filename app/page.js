@@ -2,23 +2,20 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div style={{ padding: "80px 40px", textAlign: "center" }}>
-      <h1>Redefine Your Style</h1>
-      <p>Minimal. Comfortable. Bold simplicity.</p>
+    <div style={{
+      padding: "120px 60px",
+      textAlign: "center",
+      background: "linear-gradient(135deg, #F5F7F6, #E0F1EC)"
+    }}>
+      <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>
+        Wear What Feels Real
+      </h1>
+      <p style={{ fontSize: "18px", marginBottom: "40px", color: "#555" }}>
+        Crafted for bold simplicity.
+      </p>
 
-      <Link
-        href="/products"
-        style={{
-          display: "inline-block",
-          marginTop: "20px",
-          padding: "12px 25px",
-          background: "#0E5B4A",
-          color: "white",
-          textDecoration: "none",
-          borderRadius: "6px"
-        }}
-      >
-        Shop Now
+      <Link href="/products" className="btn-primary">
+        Explore Collection
       </Link>
     </div>
   );
