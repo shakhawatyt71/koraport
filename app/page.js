@@ -1,12 +1,25 @@
+import Link from "next/link";
+
 export default function HomePage() {
   return (
-    <main className="container">
+    <div style={{ padding: "80px 40px", textAlign: "center" }}>
       <h1>Redefine Your Style</h1>
-      <p>Premium Men's Fashion for Modern Bangladesh</p>
+      <p>Minimal. Comfortable. Bold simplicity.</p>
 
-      <a href="/products" className="cta">
+      <Link
+        href="/products"
+        style={{
+          display: "inline-block",
+          marginTop: "20px",
+          padding: "12px 25px",
+          background: "#0E5B4A",
+          color: "white",
+          textDecoration: "none",
+          borderRadius: "6px"
+        }}
+      >
         Shop Now
-      </a>
-    </main>
+      </Link>
+    </div>
   );
 }
