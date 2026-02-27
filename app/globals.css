@@ -1,34 +1,121 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #F5F7F6;
-  color: #17201C;
+:root {
+  --primary: #0E5B4A;
+  --primary-hover: #0F6C57;
+  --accent: #C89A3C;
+  --bg: #F5F7F6;
+  --card: #ffffff;
+  --text-main: #17201C;
+  --text-muted: #6B7280;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
+  align-items: center;
+  padding: 25px 60px;
   background: white;
   border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 20px;
-  color: #0E5B4A;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: var(--primary);
 }
 
 .links a {
-  margin-left: 20px;
+  margin-left: 30px;
   text-decoration: none;
-  color: #17201C;
+  color: var(--text-main);
+  font-weight: 500;
+  position: relative;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s ease;
+}
+
+.links a:hover::after {
+  width: 100%;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* Product Card */
+.product-card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  display: block;
+}
+
+.product-content {
+  padding: 20px;
+}
+
+.product-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.product-price {
+  font-weight: bold;
+  color: var(--primary);
 }
 
 .footer {
   text-align: center;
-  padding: 30px;
+  padding: 40px;
+  margin-top: 100px;
   background: white;
   border-top: 1px solid #eee;
-  font-size: 14px;
 }
