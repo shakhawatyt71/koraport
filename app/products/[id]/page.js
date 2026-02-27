@@ -1,24 +1,23 @@
 "use client";
 
-import { products } from "@/data/products";
-import { useCart } from "@/context/CartContext";
 import { useParams } from "next/navigation";
+import { products } from "../../../data/products";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const { addToCart } = useCart();
+  const product = products.find(p => p.id === id);
 
-  const product = products.find((p) => p.id === id);
+  if (!product) return <div style={{ padding: 40 }}>Not found</div>;
 
-  if (!product) return <div style={{ padding: 40 }}>Product not found</div>;
+  const addToCart = () => {
+    const stored = localStorage.getItem("kp_cart");
+    let cart = stored ? JSON.parse(stored) : [];
 
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "view_item",
-    item_id: product.id,
-    item_name: product.name,
-    value: product.price
-  });
+    cart.push(product);
+    localStorage.setItem("kp_cart", JSON.stringify(cart));
+
+    alert("Added to cart");
+  };
 
   return (
     <div style={{ padding: "60px 40px" }}>
@@ -28,14 +27,14 @@ export default function ProductDetails() {
       <h3>{product.price} BDT</h3>
 
       <button
-        onClick={() => addToCart(product)}
+        onClick={addToCart}
         style={{
           padding: "12px 20px",
           background: "#0E5B4A",
           color: "white",
           border: "none",
           borderRadius: "6px",
-          cursor: "pointer"
+          marginTop: "20px"
         }}
       >
         Add To Cart
