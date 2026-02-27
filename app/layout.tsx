@@ -52,14 +52,20 @@ export default function RootLayout({
   );
 }
 
+import { useCart } from "@/context/CartContext";
+
 function Navbar() {
+  const { cart } = useCart();
+
   return (
     <nav className="navbar">
       <div className="logo">KORA PORT</div>
       <div className="links">
         <a href="/">Home</a>
         <a href="/products">Shop</a>
-        <a href="/cart">Cart</a>
+        <a href="/cart">
+          Cart ({cart.length})
+        </a>
       </div>
     </nav>
   );
