@@ -3,30 +3,29 @@ import Link from "next/link";
 
 export default function ProductsPage() {
   return (
-    <div style={{ padding: "60px 40px" }}>
-      <h1>Shop All</h1>
+    <div style={{ padding: "80px 60px" }}>
+      <h1 style={{ marginBottom: "40px" }}>Shop Collection</h1>
 
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(250px,1fr))",
-        gap: "30px",
-        marginTop: "30px"
+        gridTemplateColumns: "repeat(auto-fill, minmax(280px,1fr))",
+        gap: "40px"
       }}>
         {products.map((product) => (
           <Link
             key={product.id}
             href={`/products/${product.id}`}
-            style={{
-              textDecoration: "none",
-              background: "white",
-              padding: "20px",
-              borderRadius: "10px",
-              color: "black"
-            }}
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <img src={product.image} width="100%" />
-            <h3>{product.name}</h3>
-            <p>{product.price} BDT</p>
+            <div className="product-card">
+              <img src={product.image} alt={product.name} />
+              <div className="product-content">
+                <div className="product-title">{product.name}</div>
+                <div className="product-price">
+                  ৳ {product.price}
+                </div>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
